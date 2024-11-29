@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import CryptoList from './pages/cryptoList';
+import CryptoDetail from './pages/cryptoDetail';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ROUTE_PATHS } from './util/constants/routes';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path={ROUTE_PATHS.HOME} element={<CryptoList />}/>
+          <Route path={`${ROUTE_PATHS.CRYPTO_DETAIL}/:id`} element={<CryptoDetail />}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
